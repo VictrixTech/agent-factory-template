@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+dist/
+
+# Database
+drizzle/
+migrations/
+
+# Generated
+*.generated.ts
+*.generated.tsx
+
+# Environment
+.env*
+!.env.example
+
+# Package manager
+package-lock.json
+pnpm-lock.yaml
+
+# Cursor / IDE
+.cursor/
+.vscode/
+
+# Misc
+public/
+temp/
+*.csv

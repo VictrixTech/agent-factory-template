@@ -1,0 +1,74 @@
+# Auto-label PRs based on changed file paths
+
+database:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "migrations/**"
+          - "src/db/**"
+          - "scripts/apply-migration-*"
+
+evaluation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/modules/evaluation/**"
+          - "src/lib/evaluation/**"
+
+interview:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/modules/interview/**"
+          - "src/modules/realtime-interview/**"
+
+research:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/modules/research/**"
+
+auth:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/modules/auth/**"
+          - "src/lib/auth*"
+          - "src/modules/rbac/**"
+
+ui:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/components/**"
+          - "src/app/**/*.tsx"
+
+api:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/app/api/**"
+          - "src/trpc/**"
+          - "src/modules/*/server/**"
+
+ci-cd:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+          - "vercel.json"
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/**"
+          - "*.md"
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "package.json"
+          - "package-lock.json"
+
+inngest:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "src/inngest/**"
+
+agent-factory:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".cursor/**"
+          - "AGENTS.md"

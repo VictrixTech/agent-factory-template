@@ -1,0 +1,45 @@
+# Agent Code Factory Workflow
+
+## Development Workflow Skills
+
+When working on this project, follow the factory workflow using installed skills:
+
+### For New Features or Creative Work
+1. **Brainstorm first:** Use the `brainstorming` skill before any creative work (creating features, building components, adding functionality, or modifying behavior)
+2. **Plan before code:** Use the `writing-plans` skill to create a detailed implementation plan before writing any code. Save plans to `docs/plans/`
+3. **Execute with subagents:** Use the `subagent-driven-development` skill to dispatch independent tasks to subagents
+
+### For Implementation
+4. **TDD:** Use the `test-driven-development` skill — write failing tests before implementation code
+5. **Quality signals:** After implementation, run: `npm run lint && npm run typecheck && npm run test && npm run format:check`
+
+### Before Completing Work
+6. **Verify:** Use the `verification-before-completion` skill before claiming any work is complete
+7. **Review:** Use the `requesting-code-review` skill before merging or delivering
+
+### For Bug Fixes
+- Use the `systematic-debugging` skill — investigate root cause before proposing fixes
+- Never guess at fixes without evidence
+
+### For Database Changes
+- Always use direct Neon connection (no `-pooler`) for DDL operations
+- Test migrations on dev database first, then production
+- Follow the pattern in `.cursor/agents/neroview-migration.md`
+
+## Available Commands
+
+Use slash commands for common workflows:
+- `/new-feature` — Full feature development workflow
+- `/fix-bug` — Systematic bug fix workflow
+- `/run-tests` — Run test suite and report
+- `/quality-check` — Run all quality signals
+- `/create-migration` — Create database migration
+- `/deploy-check` — Pre-deployment verification
+
+## Custom Subagents
+
+Available specialized subagents in `.cursor/agents/`:
+- `neroview-researcher` — Codebase exploration and research
+- `neroview-migration` — Database migration creation and execution
+- `neroview-tester` — Quality signal verification
+- `neroview-reviewer` — Code review against project conventions

@@ -1,0 +1,43 @@
+name: AI PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+  pull-requests: write
+  contents: read
+
+jobs:
+  pr_agent:
+    name: AI Code Review
+    # Run on PR events, or on issue comments that start with /
+    if: >
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request &&
+       startsWith(github.event.comment.body, '/'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR Agent Review
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_action_config.auto_review: "true"
+          github_action_config.auto_describe: "true"
+          github_action_config.auto_improve: "false"
+          pr_reviewer.extra_instructions: |
+            Focus on:
+            1. Security: Check for exposed secrets, API keys, or database URLs
+            2. Architecture: Verify code is in the correct module (src/modules/*)
+            3. Data layer: Ensure database queries use Drizzle ORM, inputs validated with Zod
+            4. Auth: Verify protected routes have auth checks
+            5. Conventions: @/ imports, kebab-case files, PascalCase components
+            6. Database: DDL operations must use direct connection (no -pooler)
+          pr_description.extra_instructions: |
+            Summarize what changed and why. Note any database migrations,
+            new dependencies, or breaking changes.

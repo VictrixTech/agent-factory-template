@@ -1,0 +1,26 @@
+---
+description: "Quality gate: always run npm run build locally before pushing"
+alwaysApply: true
+---
+
+# Run build locally before pushing
+
+- Always run `npm run build` locally before pushing.
+- If the build fails, fix the errors first (types, lint, missing env, etc.).
+- If you touched auth/env/deploy code, double-check you didn't introduce or commit secrets.
+
+# When to run builds during development
+
+**Avoid running `npm run build` after each small fix** - it destroys the dev server.
+
+Only run builds when:
+1. **Complicated changes** - need to verify everything compiles correctly
+2. **Bulk changes** - made changes across multiple files
+3. **Compile verification** - want to thoroughly check for type errors
+4. **Cache issues** - dev server seems stuck with stale code
+
+For normal fixes during development:
+- Use `read_lints` to check for linter/type errors
+- Test changes directly in the browser via dev server
+- Save builds for the end or when specifically needed
+
