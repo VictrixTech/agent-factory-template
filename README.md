@@ -41,6 +41,14 @@ Issue/Request
 | `/new-feature` | Full feature development workflow |
 | `/fix-bug` | Systematic bug fix workflow |
 | `/quality-check` | Run all quality signals |
+| `/route` | Optimize context by selecting relevant skills (Factory v2) |
+
+## Factory v2 Architecture (New)
+
+The template now includes the **Factory v2** upgrade for high-efficiency orchestration:
+- **Skill Router:** Located in `.cursor/skills/skill-router.md`. It prevents context bloat by dynamically filtering 25+ skills down to the task-relevant subset.
+- **Architecture Guardagent:** Located in `.cursor/skills/architecture-review.md`. Acts as a validator to ensure all generated code complies with `AGENTS.md` and modular standards.
+- **Knowledge Sync Protocol:** Detailed in `.cursor/skills/knowledge-sync-protocol.md`. Provides a framework for distilling local session memory into global project intelligence.
 
 ## Setup Notes
 
