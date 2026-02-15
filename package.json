@@ -27,6 +27,7 @@
     "eslint-config-next": "latest",
     "jsdom": "^28.1.0",
     "prettier": "latest",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "latest",
     "vitest": "latest"
   }
