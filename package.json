@@ -22,9 +22,12 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "^5.1.4",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "jsdom": "^28.1.0",
     "prettier": "latest",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "latest",
     "vitest": "latest"
   }
