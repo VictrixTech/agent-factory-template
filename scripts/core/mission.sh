@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Factory Mission Control (v1.0)
 # Orchestrates the handoff between specialized sub-agents
 
@@ -17,7 +18,10 @@ echo "🛠️ [Phase 2: FORGE] Executing feature development for: $MISSION_NAME"
 # PHASE 3: VERIFY (Testing)
 echo "🧪 [Phase 3: VERIFY] Validating changes with Quality Checks..."
 if [ -f "package.json" ]; then
-    npm run quality-check || echo "⚠️ Quality check failed. Mission requires refinement."
+    npm run lint
+    npm run typecheck
+    npm run test
+    npm run format:check
 fi
 
 # PHASE 4: CRITIQUE (Final Review)
