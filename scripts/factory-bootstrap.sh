@@ -333,7 +333,7 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-      - run: npm ci --legacy-peer-deps
+      - run: npm ci 
       - name: Lint
         run: npm run lint
       - name: Type Check
@@ -353,7 +353,7 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-      - run: npm ci --legacy-peer-deps
+      - run: npm ci 
       - run: npm run build
 CI_EOF
   echo "   Created: ci.yml"

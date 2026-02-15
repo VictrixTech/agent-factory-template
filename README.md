@@ -43,6 +43,17 @@ Issue/Request
 | `/quality-check` | Run all quality signals |
 | `/route` | Optimize context by selecting relevant skills (Factory v2) |
 
+## Autonomous Orchestration (New)
+
+The template now includes the **Mission Control** framework for autonomous sub-agent coordination:
+- **Guardagent:** `scripts/core/guardagent.sh` - Automated architectural gatekeeper.
+- **Mission Control:** `scripts/core/mission.sh` - Orchestrates RECON -> FORGE -> VERIFY -> CRITIQUE cycles.
+
+To start an autonomous mission:
+```bash
+./scripts/core/mission.sh "YOUR_FEATURE_NAME"
+```
+
 ## Factory v2 Architecture (New)
 
 The template now includes the **Factory v2** upgrade for high-efficiency orchestration:
@@ -54,7 +65,7 @@ The template now includes the **Factory v2** upgrade for high-efficiency orchest
 
 After creating a project from this template:
 
-1. **Install dependencies:** `npm install --legacy-peer-deps`
+1. **Install dependencies:** `npm install `
 2. **Initialize Husky:** `npx husky init`
 3. **Configure pre-commit:** Set up `.husky/pre-commit` with `npx lint-staged`
 4. **Add your quality scripts** to `package.json`:

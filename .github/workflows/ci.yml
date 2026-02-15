@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-      - run: npm ci --legacy-peer-deps
+      - run: npm ci 
       - name: Lint
         run: npm run lint || true
       - name: Type Check
@@ -40,5 +40,5 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-      - run: npm ci --legacy-peer-deps
+      - run: npm ci 
       - run: npm run build || true
