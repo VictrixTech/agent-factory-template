@@ -4,10 +4,9 @@ A GitHub template repository for bootstrapping new projects with an agent-driven
 
 ## What's Included
 
-- **25 Agent Skills** in `.cursor/skills/` (obra/superpowers workflow, Vercel, Next.js, Tailwind)
-- **3 Cursor Rules** in `.cursor/rules/` (secrets, build, factory workflow)
-- **3 Workflow Commands** in `.cursor/commands/` (new-feature, fix-bug, quality-check)
-- **3 Custom Subagents** in `.cursor/agents/` (researcher, tester, reviewer)
+- **25 Agent Skills** in `.windsurf/skills/` (obra/superpowers workflow, Vercel, Next.js, Tailwind)
+- **Windsurf Rules** in `.windsurfrules` (secrets, build, factory workflow)
+- **3 Workflow Commands** in `.windsurf/workflows/` (new-feature, fix-bug, quality-check)
 - **GitHub Actions CI** with lint, typecheck, test, build pipeline
 - **AI PR Review** via qodo-ai/pr-agent
 - **PR Auto-labeling** based on changed file paths
@@ -57,9 +56,9 @@ To start an autonomous mission:
 ## Factory v2 Architecture (New)
 
 The template now includes the **Factory v2** upgrade for high-efficiency orchestration:
-- **Skill Router:** Located in `.cursor/skills/skill-router.md`. It prevents context bloat by dynamically filtering 25+ skills down to the task-relevant subset.
-- **Architecture Guardagent:** Located in `.cursor/skills/architecture-review.md`. Acts as a validator to ensure all generated code complies with `AGENTS.md` and modular standards.
-- **Knowledge Sync Protocol:** Detailed in `.cursor/skills/knowledge-sync-protocol.md`. Provides a framework for distilling local session memory into global project intelligence.
+- **Skill Router:** Located in `.windsurf/skills/skill-router.md`. It prevents context bloat by dynamically filtering 25+ skills down to the task-relevant subset.
+- **Architecture Guardagent:** Located in `.windsurf/skills/architecture-review.md`. Acts as a validator to ensure all generated code complies with `AGENTS.md` and modular standards.
+- **Knowledge Sync Protocol:** Detailed in `.windsurf/skills/knowledge-sync-protocol.md`. Provides a framework for distilling local session memory into global project intelligence.
 
 ## Setup Notes
 

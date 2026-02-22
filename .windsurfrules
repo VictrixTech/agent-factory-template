@@ -1,0 +1,81 @@
+# Agent Code Factory Workflow
+
+## Development Workflow Skills
+
+When working on this project, follow the factory workflow using installed skills:
+
+### For New Features or Creative Work
+1. **Brainstorm first:** Use the `brainstorming` skill before any creative work (creating features, building components, adding functionality, or modifying behavior)
+2. **Plan before code:** Use the `writing-plans` skill to create a detailed implementation plan before writing any code. Save plans to `docs/plans/`
+3. **Execute with subagents:** Use the `subagent-driven-development` skill to dispatch independent tasks to subagents
+
+### For Implementation
+4. **TDD:** Use the `test-driven-development` skill — write failing tests before implementation code
+5. **Quality signals:** After implementation, run: `npm run lint && npm run typecheck && npm run test && npm run format:check`
+
+### Before Completing Work
+6. **Verify:** Use the `verification-before-completion` skill before claiming any work is complete
+7. **Review:** Use the `requesting-code-review` skill before merging or delivering
+
+### For Bug Fixes
+- Use the `systematic-debugging` skill — investigate root cause before proposing fixes
+- Never guess at fixes without evidence
+
+### For Database Changes
+- Always use direct Neon connection (no `-pooler`) for DDL operations
+- Test migrations on dev database first, then production
+
+## Available Workflows
+
+Use slash commands for common workflows:
+- `/new-feature` — Full feature development workflow
+- `/fix-bug` — Systematic bug fix workflow
+- `/quality-check` — Run all quality signals
+
+---
+
+# Security: Secrets Management
+
+## Never commit secrets
+
+- Do **not** commit any of:
+  - OAuth **client secrets** (Google `client_secret`, etc.)
+  - DB URLs containing passwords/tokens (e.g. `postgresql://...:npg_...@...`)
+  - API keys, tokens, private keys
+
+## Preferred patterns
+
+- Put secrets in environment variables and `.env.local` (not committed).
+- Document **placeholders**, not real values:
+  - `NEON_DB_URL_PRODUCTION="<your production url>"`
+  - `GOOGLE_CLIENT_SECRET="<your secret>"`
+
+## If a secret is found
+
+- **Stop** and ask to rotate/revoke it.
+- Remove it from tracked files and add an ignore rule if needed.
+
+---
+
+# Quality Gate: Build Verification
+
+## Run build locally before pushing
+
+- Always run `npm run build` locally before pushing.
+- If the build fails, fix the errors first (types, lint, missing env, etc.).
+- If you touched auth/env/deploy code, double-check you didn't introduce or commit secrets.
+
+## When to run builds during development
+
+**Avoid running `npm run build` after each small fix** - it destroys the dev server.
+
+Only run builds when:
+1. **Complicated changes** - need to verify everything compiles correctly
+2. **Bulk changes** - made changes across multiple files
+3. **Compile verification** - want to thoroughly check for type errors
+4. **Cache issues** - dev server seems stuck with stale code
+
+For normal fixes during development:
+- Use linting tools to check for linter/type errors
+- Test changes directly in the browser via dev server
+- Save builds for the end or when specifically needed
